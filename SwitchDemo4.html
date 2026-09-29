@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Functions - Switch Case Real-Time Example</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        #details {
+            margin-top: 20px;
+            font-size: 20px;
+            padding: 10px;
+            font-weight: bold;
+        }
+        .planA { color: green; }
+        .planB { color: blue; }
+        .planC { color: orange; }
+        .invalid { color: red; }
+    </style>
+</head>
+<body>
+
+<h2>Mobile Recharge Plan Details (switch-case)</h2>
+
+<select id="planSelect">
+    <option value="">-- Select a Plan --</option>
+    <option value="A">Plan A - ₹199</option>
+    <option value="B">Plan B - ₹299</option>
+    <option value="C">Plan C - ₹499</option>
+</select>
+
+<button onclick="showPlan()">Get Details</button>
+
+<div id="details"></div>
+
+<script>
+function showPlan() {
+    let plan = document.getElementById("planSelect").value;
+    let details = document.getElementById("details");
+
+    switch (plan) {
+        case "A":
+            details.textContent = "Plan A: 1.5GB/day | 28 Days | ₹199";
+            details.className = "planA";
+            break;
+
+        case "B":
+            details.textContent = "Plan B: 2GB/day | 56 Days | ₹299";
+            details.className = "planB";
+            break;
+
+        case "C":
+            details.textContent = "Plan C: 3GB/day | 84 Days | ₹499";
+            details.className = "planC";
+            break;
+
+        default:
+            details.textContent = "Please select a valid plan!";
+            details.className = "invalid";
+    }
+}
+</script>
+
+</body>
+</html>

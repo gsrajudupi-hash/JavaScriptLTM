@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>If-Elseif-Else Example</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            width: fit-content;
+        }
+
+        .positive {
+            color: green;
+        }
+
+        .negative {
+            color: red;
+        }
+
+        .zero {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>JavaScript if - else if - else Example</h2>
+
+    <input type="number" id="numInput" placeholder="Enter a number">
+    <button onclick="checkNumber()">Check</button>
+
+    <div id="output">Result will appear here...</div>
+
+    <script>
+        function checkNumber() {
+            let num = parseInt(document.getElementById("numInput").value);
+            let output = document.getElementById("output");
+
+            if (num > 0) {
+                output.textContent = "This is a Positive Number";
+                output.className = "positive";
+            } 
+            else if (num < 0) {
+                output.textContent = "This is a Negative Number";
+                output.className = "negative";
+            } 
+            else {
+                output.textContent = "The number is Zero";
+                output.className = "zero";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Result - Conditional Statements</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color:#f4f4f4;
+            margin:20px;
+        }
+
+        h1{
+            color:darkblue;
+            text-align:center;
+        }
+
+        h2{
+            color:brown;
+            border-bottom:2px solid gray;
+            padding-bottom:5px;
+        }
+
+        .box{
+            background:white;
+            padding:15px;
+            margin-bottom:20px;
+            border-radius:10px;
+            box-shadow:0px 0px 5px gray;
+        }
+
+        span{
+            color:blue;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Student Result Using Conditional Statements</h1>
+
+<script>
+
+// Student Details
+let studentName = "Rahul";
+let marks = 82;
+
+document.write("<div class='box'>");
+document.write("<h2>Student Information</h2>");
+document.write("<b>Name :</b> " + studentName + "<br>");
+document.write("<b>Marks :</b> " + marks + "<br>");
+document.write("</div>");
+
+
+//=====================================================
+// 1. IF Statement
+//=====================================================
+
+document.write("<div class='box'>");
+document.write("<h2>1. IF Statement</h2>");
+
+if(marks >= 35)
+{
+    document.write("<span>Student Passed.</span>");
+}
+
+document.write("</div>");
+
+
+//=====================================================
+// 2. IF...ELSE Statement
+//=====================================================
+
+document.write("<div class='box'>");
+document.write("<h2>2. IF...ELSE Statement</h2>");
+
+if(marks >= 35)
+{
+    document.write("<span>Congratulations! You Passed.</span>");
+}
+else
+{
+    document.write("<span>Sorry! You Failed.</span>");
+}
+
+document.write("</div>");
+
+
+//=====================================================
+// 3. ELSE IF Ladder
+//=====================================================
+
+document.write("<div class='box'>");
+document.write("<h2>3. ELSE IF Statement (Grade Calculation)</h2>");
+
+let grade;
+
+if(marks >= 90)
+{
+    grade = "A+";
+}
+else if(marks >= 80)
+{
+    grade = "A";
+}
+else if(marks >= 70)
+{
+    grade = "B";
+}
+else if(marks >= 60)
+{
+    grade = "C";
+}
+else if(marks >= 35)
+{
+    grade = "D";
+}
+else
+{
+    grade = "F";
+}
+
+document.write("<b>Grade : </b>" + grade);
+
+document.write("</div>");
+
+
+//=====================================================
+// 4. SWITCH Statement
+//=====================================================
+
+document.write("<div class='box'>");
+document.write("<h2>4. SWITCH Statement</h2>");
+
+let grade1=prompt("Enter Student Grade :");
+switch(grade1)
+{
+    case "A+":
+        document.write("Outstanding Performance.");
+        break;
+
+    case "A":
+        document.write("Excellent Performance.");
+        break;
+
+    case "B":
+        document.write("Very Good Performance.");
+        break;
+
+    case "C":
+        document.write("Good Performance.");
+        break;
+
+    case "D":
+        document.write("Pass - Needs Improvement.");
+        break;
+
+    case "F":
+        document.write("Failed. Better Luck Next Time.");
+        break;
+
+    default:
+        document.write("Invalid Grade.");
+}
+
+document.write("</div>");
+
+</script>
+
+</body>
+</html>

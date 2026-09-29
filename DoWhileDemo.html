@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Do-While Loop Real-Time Example</title>
+    <style>
+        #msg {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Do-While Loop Example – ATM PIN Validation</h2>
+
+<button onclick="validatePIN()">Enter PIN</button>
+<div id="msg"></div>
+
+<script>
+function validatePIN() {
+    let actualPIN = "1234";
+    let enteredPIN;
+    let attempts = 0;
+
+    do {
+        enteredPIN = prompt("Enter your ATM PIN:");
+        attempts++;
+    } while (enteredPIN !== actualPIN && attempts < 3);
+
+    let msg = document.getElementById("msg");
+
+    if (enteredPIN === actualPIN) {
+        msg.textContent = "PIN Correct! Access Granted.";
+        msg.style.color = "green";
+    } else {
+        msg.textContent = "3 Wrong Attempts! Card Blocked.";
+        msg.style.color = "red";
+    }
+}
+</script>
+
+</body>
+</html>

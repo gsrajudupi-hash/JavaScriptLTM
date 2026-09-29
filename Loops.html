@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products Management - Looping Statements</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            margin:20px;
+        }
+
+        h1{
+            text-align:center;
+            color:darkblue;
+        }
+
+        h2{
+            color:brown;
+            border-bottom:2px solid gray;
+            padding-bottom:5px;
+        }
+
+        .box{
+            background:white;
+            padding:15px;
+            margin-bottom:20px;
+            border-radius:10px;
+            box-shadow:0px 0px 6px gray;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:10px;
+        }
+
+        th,td{
+            border:1px solid gray;
+            padding:8px;
+            text-align:center;
+        }
+
+        th{
+            background:darkblue;
+            color:white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>Products Management using Looping Statements</h1>
+
+<script>
+
+// Product Array
+let products = [
+    {
+        id:101,
+        name:"Laptop",
+        price:65000,
+        category:"Electronics"
+    },
+    {
+        id:102,
+        name:"Mobile",
+        price:28000,
+        category:"Electronics"
+    },
+    {
+        id:103,
+        name:"Shoes",
+        price:3500,
+        category:"Fashion"
+    },
+    {
+        id:104,
+        name:"Watch",
+        price:4500,
+        category:"Accessories"
+    },
+    {
+        id:105,
+        name:"Bag",
+        price:1800,
+        category:"Travel"
+    }
+];
+
+
+//=====================================================
+// 1. FOR LOOP
+//=====================================================
+
+document.write("<div class='box'>");
+document.write("<h2>1. FOR Loop - Display All Products</h2>");
+
+document.write("<table>");
+document.write("<tr>");
+document.write("<th>ID</th>");
+document.write("<th>Name</th>");
+document.write("<th>Price</th>");
+document.write("<th>Category</th>");
+document.write("</tr>");
+
+for(let i=0;i<products.length;i++)
+{
+    document.write("<tr>");
+    document.write("<td>"+products[i].id+"</td>");
+    document.write("<td>"+products[i].name+"</td>");
+    document.write("<td>₹"+products[i].price+"</td>");
+    document.write("<td>"+products[i].category+"</td>");
+    document.write("</tr>");
+}
+
+document.write("</table>");
+document.write("</div>");
+
+
+//=====================================================
+// 2. WHILE LOOP
+//=====================================================
+
+document.write("<div class='box'>");
+document.write("<h2>2. WHILE Loop - Calculate Total Price</h2>");
+
+let i=0;
+let total=0;
+
+while(i<products.length)
+{
+    total=total+products[i].price;
+    i++;
+}
+
+document.write("<h3>Total Product Value : ₹"+total+"</h3>");
+document.write("</div>");
+
+
+//=====================================================
+// 3. DO...WHILE LOOP
+//=====================================================
+
+document.write("<div class='box'>");
+document.write("<h2>3. DO...WHILE Loop - Display Product Names</h2>");
+
+let j=0;
+
+do
+{
+    document.write((j+1)+". "+products[j].name+"<br>");
+    j++;
+
+}while(j<products.length);
+
+document.write("</div>");
+
+
+//=====================================================
+// 4. FOR...OF LOOP
+//=====================================================
+
+document.write("<div class='box'>");
+document.write("<h2>4. FOR...OF Loop - Premium Products (Price > ₹5000)</h2>");
+
+for(let product of products)
+{
+    if(product.price>5000)
+    {
+        document.write(
+            product.name+
+            " - ₹"+
+            product.price+
+            "<br>"
+        );
+    }
+}
+
+document.write("</div>");
+
+
+//=====================================================
+// 5. FOR...IN LOOP
+//=====================================================
+
+document.write("<div class='box'>");
+document.write("<h2>5. FOR...IN Loop - Product Details</h2>");
+
+let singleProduct=products[0];
+
+for(let key in singleProduct)
+{
+    document.write(
+        "<b>"+key+"</b> : "+
+        singleProduct[key]+
+        "<br>"
+    );
+}
+
+document.write("</div>");
+
+</script>
+
+</body>
+</html>

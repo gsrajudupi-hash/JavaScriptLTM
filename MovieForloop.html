@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Ticket Booking - Detailed Bill</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        table {
+            width: 60%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #555;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+
+<h2>🎬 Movie Ticket Booking – Detailed Bill (Using For Loop)</h2>
+
+<label>How many tickets do you want to book?</label>
+<input type="number" id="ticketCount" placeholder="Enter number of tickets">
+
+<button onclick="bookTickets()">Book Tickets</button>
+
+<div id="result">Total</div>
+
+<script>
+function bookTickets() {
+    let count = parseInt(document.getElementById("ticketCount").value);
+    let result = document.getElementById("result");
+
+    if (isNaN(count) || count <= 0) {
+        alert("Please enter a valid number of tickets!");
+        return;
+    }
+
+    let total = 0;
+    let billTable = `
+        <table>
+            <tr>
+                <th>Ticket No.</th>
+                <th>Age</th>
+                <th>Ticket Price (₹)</th>
+            </tr>
+    `;
+
+    for (let i = 1; i <= count; i++) {
+        let age = parseInt(prompt("Enter age for Ticket " + i + ":"));
+        let price = 0;
+
+        if (!isNaN(age) && age > 0) {
+
+            if (age < 12) {
+                price = 150;        // Kids price
+            } else if (age <= 60) {
+                price = 250;        // Adult price
+            } else {
+                price = 180;        // Senior citizen price
+            }
+
+            total += price;
+
+            billTable += `
+                <tr>
+                    <td>${i}</td>
+                    <td>${age}</td>
+                    <td>${price}</td>
+                </tr>
+            `;
+
+        } else {
+            alert("Invalid age! Enter again.");
+            i--; // repeat this iteration
+        }
+    }
+
+    billTable += `</table>`;
+
+    result.innerHTML = billTable +
+        `<h3>Total Amount: ₹${total.toFixed(2)}</h3>`;
+}
+</script>
+
+</body>
+</html>

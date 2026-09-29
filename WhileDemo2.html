@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart Total using While Loop</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Shopping Cart Total (While Loop)</h2>
+
+<button onclick="calculateTotal()">Start Adding Products</button>
+
+<div id="result"></div>
+
+<script>
+function calculateTotal() {
+    let total = 0;
+    let price = 0;
+
+    // Ask user for prices until 0 is entered
+    price = parseFloat(prompt("Enter product price (0 to stop):"));
+
+    while (price !== 0) {
+        if (!isNaN(price) && price > 0) {
+            total += price;
+        } else {
+            alert("Invalid price! Please enter a valid amount.");
+        }
+
+        price = parseFloat(prompt("Enter product price (0 to stop):"));
+    }
+
+    document.getElementById("result").textContent =
+        "Total Amount in Cart: ₹" + total.toFixed(2);
+}
+</script>
+
+</body>
+</html>

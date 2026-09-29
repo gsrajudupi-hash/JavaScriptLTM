@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products Management - Looping Statements</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            background:#f4f4f4;
+            margin:20px;
+        }
+
+        h1{
+            text-align:center;
+            color:darkblue;
+        }
+
+        h2{
+            color:brown;
+        }
+
+        .box{
+            background:white;
+            padding:15px;
+            margin-bottom:20px;
+            border-radius:8px;
+            box-shadow:0px 0px 5px gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Products Management Using Looping Statements</h1>
+
+<script>
+
+// Product Details
+let productId = 101;
+let productName = "Laptop";
+let productPrice = 65000;
+let productCategory = "Electronics";
+
+
+//=========================================
+// 1. FOR LOOP
+//=========================================
+
+document.write("<div class='box'>");
+document.write("<h2>1. FOR Loop</h2>");
+
+for(let i=1;i<=5;i++)
+{
+    document.write("Product No : " + i + "<br>");
+}
+
+document.write("</div>");
+
+
+//=========================================
+// 2. WHILE LOOP
+//=========================================
+
+document.write("<div class='box'>");
+document.write("<h2>2. WHILE Loop</h2>");
+
+let count=1;
+
+while(count<=3)
+{
+    document.write(productName + " - ₹" + productPrice + "<br>");
+    count++;
+}
+
+document.write("</div>");
+
+
+//=========================================
+// 3. DO WHILE LOOP
+//=========================================
+
+document.write("<div class='box'>");
+document.write("<h2>3. DO...WHILE Loop</h2>");
+
+let qty=1;
+
+do
+{
+    document.write("Processing Product Order : " + qty + "<br>");
+    qty++;
+
+}while(qty<=5);
+
+document.write("</div>");
+
+
+//=========================================
+// 4. FOR...IN LOOP -Iterates in Objects based on Index 
+//=========================================
+
+document.write("<div class='box'>");
+document.write("<h2>4. FOR...IN Loop</h2>");
+
+let product = {
+    Id: productId,
+    Name: productName,
+    Price: productPrice,
+    Category: productCategory
+};
+
+for(let key in product)
+{
+    document.write("<b>"+key+"</b> : "+product[key]+"<br>");
+}
+
+document.write("</div>");
+
+
+//=========================================
+// 5. FOR...OF LOOP - Iterates in Arrays/Collections based on Values (Modern Approach)
+//=========================================
+
+document.write("<div class='box'>");
+document.write("<h2>5. FOR...OF Loop</h2>");
+
+document.write("Product Name Characters:<br><br>");
+
+for(let ch of productName)
+{
+    document.write(ch + "<br>");
+}
+
+document.write("</div>");
+
+</script>
+
+</body>
+</html>
