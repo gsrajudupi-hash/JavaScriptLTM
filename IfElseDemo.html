@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS If-Else Statement</title>
+</head>
+<body>
+    <h1>JS Code to find Greatest of 2 Nos. </h1>
+    <script>
+    var a,b;
+    a=parseInt(prompt("Enter First Number :"));
+    b=parseInt(prompt("Enter Second Number :"));
+    
+    if(a > b)
+    {
+        document.writeln("<h2>"+a + " is Greatest");
+    }
+    else
+    {
+        document.writeln("<h2>"+b + " is Greatest");
+    }
+
+    var now = new Date(); // Creating Date Object
+    document.writeln("<h2>"+ now+"</h2>");
+
+    var dayOfWeek = now.getDay(); // Sunday - Saturday : 0 - 6
+    
+    if(dayOfWeek == 5 || dayOfWeek == 6 ) {
+        document.writeln("Have a nice weekend!");
+    } else {
+        document.writeln("Have a nice day!");
+    } 
+    </script>
+</body>
+</html>
