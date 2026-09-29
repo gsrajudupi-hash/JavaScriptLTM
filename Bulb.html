@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bulb ON / OFF Event Handling</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+        background: radial-gradient(circle,#2c2c2c 0%, #111 45%, #000 100%);
+        color:white;
+        text-align:center;
+        min-height:100vh;
+        overflow:hidden;
+    }
+
+    h1{
+        margin-top:30px;
+        font-size:40px;
+        color:#ffe600;
+        text-shadow:0 0 10px yellow,
+                    0 0 20px gold,
+                    0 0 30px orange;
+    }
+
+    .room{
+        display:flex;
+        justify-content:space-around;
+        align-items:center;
+        margin-top:80px;
+        padding:20px;
+    }
+
+    img{
+        width:170px;
+        cursor:pointer;
+        transition:0.4s;
+        filter:drop-shadow(0 0 15px rgba(255,255,180,.4));
+    }
+
+    img:hover{
+        transform:scale(1.08);
+        filter:drop-shadow(0 0 30px yellow);
+    }
+
+    .buttons{
+        margin-top:70px;
+    }
+
+    button{
+        padding:15px 35px;
+        margin:15px;
+        border:none;
+        border-radius:40px;
+        font-size:18px;
+        cursor:pointer;
+        font-weight:bold;
+        transition:.4s;
+    }
+
+    #btn1{
+        background:#ff9800;
+        color:white;
+        box-shadow:0 0 15px #ff9800;
+    }
+
+    #btn1:hover{
+        background:#ffb300;
+        transform:translateY(-3px);
+        box-shadow:0 0 30px orange;
+    }
+
+    .btn2{
+        background:#2196f3;
+        color:white;
+        box-shadow:0 0 15px #2196f3;
+    }
+
+    .btn2:hover{
+        background:#42a5f5;
+        transform:translateY(-3px);
+        box-shadow:0 0 30px cyan;
+    }
+
+    .message{
+        margin-top:30px;
+        color:#ff5252;
+        font-size:32px;
+        font-weight:bold;
+        text-shadow:0 0 10px red;
+    }
+</style>
+
+<script>
+    function onOff1()
+    {
+        var txt1 = document.getElementById("left");
+        var txt2 = document.getElementById("right");
+        var txt = txt1.src;
+        txt1.src = txt2.src;
+        txt2.src = txt;
+    }
+
+    function onOff2()
+    {
+        var txt1 = document.getElementById("right");
+        var txt2 = document.getElementById("left");
+        var txt = txt1.src;
+        txt1.src = txt2.src;
+        txt2.src = txt;
+    }
+</script>
+
+</head>
+
+<body>
+
+<h1>💡 Switch Bulb - ON / OFF 💡</h1>
+
+<div class="room">
+
+    <img src="https://toppng.com/uploads/preview/light-bulb-on-off-png-11553940208oq66nq8jew.png"
+         id="left"
+         onclick="onOff1()">
+
+    <img src="https://toppng.com/uploads/preview/light-bulb-on-off-png-11553940319kdxsp3rf0i.png"
+         id="right"
+         onclick="onOff2()">
+
+</div>
+
+<div class="buttons">
+    <button id="btn1">Coforge</button>
+    <button class="btn2">BICT</button>
+</div>
+
+<div id="msg" class="message"></div>
+
+<script>
+
+    btn1.addEventListener("click", function(){
+        alert("I am in Board Room");
+    });
+
+    btn1.addEventListener("click", hello);
+
+    function hello(){
+        alert("Hello World from Alstonia");
+    }
+
+    document.getElementById("msg").innerHTML = "Hello World";
+
+</script>
+
+</body>
+</html>
