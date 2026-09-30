@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const Set1 = new Set()
+
+Set1.add(1)           // Set [ 1 ]
+Set1.add(5)           // Set [ 1, 5 ]
+Set1.add(5)           // Set [ 1, 5 ]
+Set1.add('abc') // Set [ 1, 5, 'abc' ]
+
+// Adding an object reference to the set.
+const obj = {a: 1, b: 2}
+Set1.add(obj)
+
+Set1.add({a: 1, b: 2})// o is referencing a different object here
+
+document.write(Set1.has(1) );             // true
+document.write(Set1.has(3)  );            // false, since 3 is not present
+document.write(Set1.has(5)    );          // true
+document.write(Set1.has(Math.sqrt(25)) ); // true
+document.write(Set1.has('abc')); // true
+document.write(Set1.has(obj)  );     // true
+
+document.write(Set1.size   );      // 5
+
+Set1.delete(5)    // removes 5 from the set
+Set1.has(5)       // false, 5 has been removed
+
+document.write(Set1.size );        // 4, since we just removed one value
+
+for (let elements of Set1) {  
+    document.write(JSON.stringify(elements)+"<br>");  
+        }  
+
+// logs Set(4) { 1, "some text", {...}, {...} }
+    </script>
+</body>
+</html>

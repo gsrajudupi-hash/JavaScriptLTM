@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Map Demo</h1>
+    <script>
+        'use strict'; /* Cannot use undeclared variables */
+const scores = new Map([['Shubham', 12], ['Vaishnavi', 13], ['Juhi', 10], ['Priyanka', 12]]);
+scores.set('Sohuard', 14);
+document.write("The Map size :"+scores.size+"<br>");
+
+for(const [name, score] of scores.entries()) 
+{
+    document.write(`${name} : ${score}`+"<br>");
+}
+
+document.writeln("The 2nd record is :"+scores.get('Shubham')+"<br>");  
+
+document.write("<hr>");
+document.write("The JavaScript map entries() method returns an object of new map iterator. This object contains the key-value pair for each element. It maintains insertion order.")
+document.write("<br>");
+
+var map=new Map();  
+map.set(1,"jQuery");  
+map.set(2,"AngularJS");  
+map.set(3,"Bootstrap");  
+  
+var itr=map.entries();  
+document.writeln(itr.next().value+"<br>");  
+document.writeln(itr.next().value+"<br>");  
+document.writeln(itr.next().value);  
+
+document.writeln("The 2nd record is :"+map.get(2)+"<br>");  
+    </script>
+</body>
+</html>

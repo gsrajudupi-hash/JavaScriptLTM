@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Demo</title>
+</head>
+<body>
+    <h1>Set in Java Script</h1>
+    <script>  
+        var set = new Set();  
+        set.add("jQuery");  
+        set.add("AngularJS");  
+        set.add("Bootstrap");  
+ //add the elements to set object in chainable form.
+        set.add("Spring").add("Hibernate").add("Micro Services");  
+        
+        for (let elements of set) {  
+         document.writeln(elements+"<br>");  
+        }  
+
+        
+        document.writeln("Size before invoking delete() method: "+ set.size+"<br>");  
+        set.delete("Bootstrap");  
+        document.writeln("Size after invoking delete() method: "+set.size+"<br>");  
+
+        document.writeln("Size before invoking clear() method: "+ set.size+"<br>");  
+        set.clear();   //clear() method is used to remove all the elements from Set object.
+        document.writeln("Size after invoking clear() method: "+set.size);  
+
+        document.write("<hr>");
+
+        var set1 = new Set();  
+set1.add("MongoDB");  
+set1.add("Oracle");  
+set1.add("MySQL");  
+
+for(let elements1 of set1) {  
+         document.writeln(elements1+"<br>");  
+        }  
+
+var itr=set1.entries();  
+
+for(let elements of itr)  
+  {  
+document.writeln(elements+"<br>");  
+  }  
+        </script>
+</body>
+</html>
