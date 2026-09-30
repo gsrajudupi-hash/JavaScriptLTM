@@ -1,0 +1,360 @@
+/*
+ * Banking System
+ * Demonstrating:
+ * 1. User Defined Functions
+ * 2. Anonymous Functions
+ * 3. Arrow Functions
+ */
+
+// Bank Accounts
+let accounts = [
+    { accountNo: 101, name: "Rajesh", balance: 50000 },
+    { accountNo: 102, name: "Ravi", balance: 35000 },
+    { accountNo: 103, name: "Priya", balance: 45000 }
+];
+
+
+// =====================================================
+// 1. USER DEFINED FUNCTIONS
+// =====================================================
+
+// Function to display account details
+function displayAccount(account) {
+
+    document.write("<hr>");
+
+    document.write("<b>Account No :</b> " +
+        account.accountNo + "<br>");
+
+    document.write("<b>Name :</b> " +
+        account.name + "<br>");
+
+    document.write("<b>Balance :</b> ₹" +
+        account.balance + "<br>");
+
+    document.write("<hr>");
+}
+
+
+// Function to deposit money
+function deposit(account, amount) {
+
+    if (amount > 0) {
+
+        account.balance =
+            account.balance + amount;
+
+        document.write(
+            "₹" + amount +
+            " deposited successfully.<br>"
+        );
+
+        document.write(
+            "Current Balance : ₹" +
+            account.balance + "<br>"
+        );
+
+    } else {
+
+        document.write(
+            "Invalid deposit amount.<br>"
+        );
+    }
+}
+
+
+// Function to withdraw money
+function withdraw(account, amount) {
+
+    if (amount <= 0) {
+
+        document.write(
+            "Invalid withdrawal amount.<br>"
+        );
+
+    } else if (amount > account.balance) {
+
+        document.write(
+            "Insufficient balance.<br>"
+        );
+
+    } else {
+
+        account.balance =
+            account.balance - amount;
+
+        document.write(
+            "₹" + amount +
+            " withdrawn successfully.<br>"
+        );
+
+        document.write(
+            "Current Balance : ₹" +
+            account.balance + "<br>"
+        );
+    }
+}
+
+
+// Function to find an account
+function findAccount(accountNo) {
+
+    for (let account of accounts) {
+
+        if (account.accountNo === accountNo) {
+            return account;
+        }
+    }
+
+    return null;
+}
+
+
+// =====================================================
+// 2. ANONYMOUS FUNCTIONS
+// =====================================================
+
+// Anonymous function assigned to a variable
+const calculateInterest = function (balance, rate) {
+
+    return balance * rate / 100;
+
+};
+
+
+// Anonymous function to display a message
+const showMessage = function (message) {
+
+    document.write(
+        "<h3>" + message + "</h3>"
+    );
+
+};
+
+
+// =====================================================
+// 3. ARROW FUNCTIONS
+// =====================================================
+
+// Arrow function to calculate balance after interest
+const calculateBalanceWithInterest =
+    (balance, interest) => balance + interest;
+
+
+// Arrow function to check minimum balance
+const checkMinimumBalance =
+    balance => balance >= 1000;
+
+
+// Arrow function to get account holder name
+const getAccountName =
+    account => account.name;
+
+
+// =====================================================
+// BANKING SYSTEM
+// =====================================================
+
+document.write(
+    "<h1>Banking System</h1>"
+);
+
+document.write(
+    "<h2>Account Details</h2>"
+);
+
+
+// Display all accounts
+accounts.forEach(function (account) {
+
+    displayAccount(account);
+
+});
+
+
+// =====================================================
+// FIND ACCOUNT
+// =====================================================
+
+document.write(
+    "<h2>Find Account</h2>"
+);
+
+let account = findAccount(102);
+
+if (account != null) {
+
+    displayAccount(account);
+
+} else {
+
+    document.write(
+        "Account not found.<br>"
+    );
+}
+
+
+// =====================================================
+// DEPOSIT
+// =====================================================
+
+document.write(
+    "<h2>Deposit Operation</h2>"
+);
+
+deposit(account, 5000);
+
+
+// =====================================================
+// WITHDRAW
+// =====================================================
+
+document.write(
+    "<h2>Withdrawal Operation</h2>"
+);
+
+withdraw(account, 3000);
+
+
+// =====================================================
+// ANONYMOUS FUNCTION
+// =====================================================
+
+document.write(
+    "<h2>Interest Calculation</h2>"
+);
+
+let interest =
+    calculateInterest(account.balance, 5);
+
+document.write(
+    "Current Balance : ₹" +
+    account.balance + "<br>"
+);
+
+document.write(
+    "Interest Rate : 5%<br>"
+);
+
+document.write(
+    "Interest : ₹" +
+    interest + "<br>"
+);
+
+
+// =====================================================
+// ARROW FUNCTION
+// =====================================================
+
+document.write(
+    "<h2>Balance After Interest</h2>"
+);
+
+let newBalance =
+    calculateBalanceWithInterest(
+        account.balance,
+        interest
+    );
+
+document.write(
+    "Balance After Interest : ₹" +
+    newBalance + "<br>"
+);
+
+
+// =====================================================
+// ARROW FUNCTION - MINIMUM BALANCE
+// =====================================================
+
+document.write(
+    "<h2>Minimum Balance Check</h2>"
+);
+
+document.write(
+    "Minimum Balance Requirement : ₹1000<br>"
+);
+
+document.write(
+    "Account Balance : ₹" +
+    account.balance + "<br>"
+);
+
+document.write(
+    "Valid Minimum Balance : " +
+    checkMinimumBalance(account.balance) +
+    "<br>"
+);
+
+
+// =====================================================
+// ARROW FUNCTION - ACCOUNT NAME
+// =====================================================
+
+document.write(
+    "<h2>Account Holder</h2>"
+);
+
+document.write(
+    "Account Holder Name : " +
+    getAccountName(account) +
+    "<br>"
+);
+
+
+// =====================================================
+// FILTER USING ARROW FUNCTION
+// =====================================================
+
+document.write(
+    "<h2>Accounts with Balance Greater Than ₹40,000</h2>"
+);
+
+let highBalanceAccounts =
+    accounts.filter(
+        account => account.balance > 40000
+    );
+
+highBalanceAccounts.forEach(account => {
+
+    document.write(
+        account.accountNo +
+        " - " +
+        account.name +
+        " - ₹" +
+        account.balance +
+        "<br>"
+    );
+
+});
+
+
+// =====================================================
+// MAP USING ARROW FUNCTION
+// =====================================================
+
+document.write(
+    "<h2>Account Holder Names</h2>"
+);
+
+let accountNames =
+    accounts.map(
+        account => account.name
+    );
+
+document.write(
+    accountNames.join(", ") +
+    "<br>"
+);
+
+
+// =====================================================
+// FINAL ACCOUNT DETAILS
+// =====================================================
+
+showMessage("Final Account Details");
+
+accounts.forEach(account => {
+
+    displayAccount(account);
+
+});
