@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form with Field Level Validation</title>
+
+    <link rel="stylesheet" href="Validation1.css">
+       
+</head>
+<body>
+    <div class="registration-container">
+        <h1>Create an Account</h1>
+        <form id="registrationForm" novalidate>
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required minlength="3" maxlength="50" autofocus>
+                <div class="error-message">Please enter your full name (3-50 characters)</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message">Please enter a valid email address</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$">
+                <div class="password-strength">
+                    <div class="strength-meter" id="passwordStrength"></div>
+                </div>
+                <div class="error-message">Password must be at least 8 characters with uppercase, lowercase, and number</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <div class="error-message">Passwords do not match</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number">
+                <div class="error-message">Please enter a valid 10-digit phone number</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required max="2005-12-31">
+                <div class="error-message">You must be at least 18 years old</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country" required>
+                    <option value="">Select Country</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                    <option value="IN">India</option>
+                </select>
+                <div class="error-message">Please select your country</div>
+            </div>
+            
+            <div class="terms-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the Terms and Conditions</label>
+                <div class="error-message" style="position: absolute; bottom: -20px; left: 0;">You must accept the terms</div>
+            </div>
+            
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+   <script src="Validation1.js"></script>
+</body>
+</html>

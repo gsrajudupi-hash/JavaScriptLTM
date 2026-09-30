@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>If ElseIf Demo</title>
+    <style>
+        #msg {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+
+<h2>Login Validation (if - else if - else)</h2>
+
+<input type="text" id="username" placeholder="Enter Username"><br><br>
+<input type="password" id="password" placeholder="Enter Password"><br><br>
+
+<button onclick="validateLogin()">Login</button>
+
+<div id="msg"></div>
+
+<script>
+function validateLogin() {
+    //Dom Manipulation
+    //let keyword is used to declare local variables
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+    let msg = document.getElementById("msg");
+
+    if (user === "" || pass === "") {
+        msg.textContent = "Fields cannot be empty!";
+        msg.className = "error";
+    }
+    else if (user === "admin" && pass === "12345") {
+        msg.textContent = "Login Successful!";
+        msg.className = "success";
+    }
+    else {
+        msg.textContent = "Invalid Username or Password!";
+        msg.className = "error";
+    }
+}
+</script>
+
+</body>
+</html>

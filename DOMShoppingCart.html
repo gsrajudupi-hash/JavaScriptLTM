@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shopping Cart Using DOM</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    #items button {
+        margin-left: 10px;
+    }
+
+    #cartTable {
+        width: 60%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #333;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background: #ddd;
+    }
+
+    .removeBtn {
+        background: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h2>🛒 Shopping Cart (Using DOM Methods)</h2>
+
+<!-- Store Items -->
+<div id="items">
+    <h3>Available Products</h3>
+    <p>Mobile - ₹10000 <button onclick="addToCart('Mobile', 10000)">Add</button></p>
+    <p>Headphones - ₹1500 <button onclick="addToCart('Headphones', 1500)">Add</button></p>
+    <p>Charger - ₹800 <button onclick="addToCart('Charger', 800)">Add</button></p>
+</div>
+
+<!-- Cart Table -->
+<table id="cartTable">
+    <tr>
+        <th>Product</th>
+        <th>Price (₹)</th>
+        <th>Quantity</th>
+        <th>Total (₹)</th>
+        <th>Action</th>
+    </tr>
+</table>
+
+<h3 id="grandTotal">Grand Total: ₹0</h3>
+
+<script>
+function addToCart(productName, price) {
+    let table = document.getElementById("cartTable");
+
+    // Check if item already exists (DOM: querySelector)
+    let existingRow = document.querySelector(`tr[data-name="${productName}"]`);
+
+    if (existingRow) {
+        let qtyCell = existingRow.querySelector(".qty");
+        let newQty = parseInt(qtyCell.textContent) + 1;
+        qtyCell.textContent = newQty;
+
+        // Update total price
+        existingRow.querySelector(".total").textContent = newQty * price;
+
+        updateGrandTotal();
+        return;
+    }
+ 
+    // DOM: createElement
+    let row = document.createElement("tr");
+    row.setAttribute("data-name", productName); // identify row
+
+    // DOM: innerHTML to create cells
+    row.innerHTML = `
+        <td>${productName}</td>
+        <td>${price}</td>
+        <td class="qty">1</td>
+        <td class="total">${price}</td>
+        <td><button class="removeBtn">Remove</button></td>
+    `;
+
+    // DOM: appendChild
+    table.appendChild(row);
+    updateGrandTotal();
+   // Add remove functionality
+    row.querySelector(".removeBtn").addEventListener("click", function () {
+    let qtyCell = row.querySelector(".qty");
+    let price = parseInt(row.children[1].textContent); // price column
+    let qty = parseInt(qtyCell.textContent);
+
+    if (qty > 1) {
+        // reduce quantity
+        qty--;
+        qtyCell.textContent = qty;
+
+        // update total for this row
+        row.querySelector(".total").textContent = qty * price;
+    } else {
+        // quantity reached 1 → remove only when clicked
+        row.remove();
+    }
+
+    updateGrandTotal();
+});
+
+}
+
+// Update Grand Total
+function updateGrandTotal() {
+    let totals = document.querySelectorAll(".total");
+    let sum = 0;
+
+    totals.forEach(item => {
+        sum += parseInt(item.textContent);
+    });
+
+    document.getElementById("grandTotal").textContent = "Grand Total: ₹" + sum;
+}
+</script>
+
+</body>
+</html>

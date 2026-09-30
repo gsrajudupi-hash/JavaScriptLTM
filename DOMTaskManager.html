@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DOM Methods Real-Time Example</title>
+
+<style>
+    body {
+        font-family: Arial;
+        padding: 20px;
+    }
+    #taskList li {
+        background: #eee;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .deleteBtn {
+        background: red;
+        color: white;
+        border: none;
+        padding: 5px 8px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+</style>
+</head>
+<body>
+
+<h2>📝 Task Manager (Using DOM Methods)</h2>
+
+<input type="text" id="taskInput" placeholder="Enter a new task">
+<button id="addBtn">Add Task</button>
+
+<ul id="taskList"></ul>
+
+<script>
+// DOM Method: getElementById
+let input = document.getElementById("taskInput");
+let addBtn = document.getElementById("addBtn");
+let taskList = document.getElementById("taskList");
+
+// DOM Method: addEventListener
+addBtn.addEventListener("click", addTask);
+
+function addTask() {
+    let taskText = input.value.trim();
+
+    if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+    }
+
+    // DOM Method: createElement
+    let li = document.createElement("li");
+
+    // DOM Method: textContent
+    li.textContent = taskText;
+
+    // DOM Method: createElement for delete button
+    let del = document.createElement("button");
+    del.textContent = "Delete";
+
+    // DOM Method: setAttribute
+    del.setAttribute("class", "deleteBtn");
+
+    // Append delete button inside <li>
+    li.appendChild(del);
+
+    // DOM Method: appendChild
+    taskList.appendChild(li);
+
+    // Clear input field
+    input.value = "";
+
+    // Add delete functionality
+    del.addEventListener("click", function () {
+        // DOM Method: remove child
+        taskList.removeChild(li);
+    });
+}
+
+// EXTRA DOM METHODS
+// Example: querySelector to select first <li>
+setTimeout(() => {
+    let firstItem = document.querySelector("#taskList li");
+    if (firstItem) {
+        console.log("First Task:", firstItem.textContent);
+    }
+}, 3000);
+
+// querySelectorAll example
+// Will print all list items after 5 seconds
+setTimeout(() => {
+    let allTasks = document.querySelectorAll("#taskList li");
+    console.log("All Tasks Count:", allTasks.length);
+}, 5000);
+
+</script>
+
+</body>
+</html>
